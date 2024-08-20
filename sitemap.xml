@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://jinzbone.github.io/2024/08/20/about-me/</loc>
+    <loc>https://jinzbone.github.io/2024/08/20/%E6%88%91%E7%9A%84%E5%A4%A9%E6%89%8D%E5%A5%B3%E5%8F%8B/</loc>
     
     <lastmod>2024-08-20</lastmod>
     
@@ -20,7 +20,16 @@
   </url>
   
   <url>
-    <loc>https://jinzbone.github.io/2024/08/20/%E6%88%91%E7%9A%84%E5%A4%A9%E6%89%8D%E5%A5%B3%E5%8F%8B/</loc>
+    <loc>https://jinzbone.github.io/categories/index.html</loc>
+    
+    <lastmod>2024-08-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jinzbone.github.io/2024/08/20/about-me/</loc>
     
     <lastmod>2024-08-20</lastmod>
     
@@ -39,6 +48,13 @@
   
   <url>
     <loc>https://jinzbone.github.io/tags/%E5%B0%8F%E8%AF%B4/</loc>
+    <lastmod>2024-08-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jinzbone.github.io/tags/%E7%AE%A1%E7%90%86/</loc>
     <lastmod>2024-08-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
