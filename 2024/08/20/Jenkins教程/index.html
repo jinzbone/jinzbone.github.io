@@ -46,11 +46,12 @@
 <p>把里面的<code>external</code>值改为服务器的IP和端口（就是之后你通过浏览器访问的地址）</p>
 </li>
 </ol>
-<p><img src="/Jenkins%E6%95%99%E7%A8%8B/gitlab-ip.png" alt="alt text"></p>
+<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/gitlab-ip.png" class="" title="alt text">
+
 <ol start="4">
 <li>启动GitLab<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-ctl reconfigure</span><br></pre></td></tr></table></figure></li>
 <li>查看默认登陆密码<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/gitlab/initial_root_password</span><br></pre></td></tr></table></figure></li>
-<li>浏览器登录<br>访问地址就是gitlab.rb里配置的IP、端口，用户名就是root，密码就是你刚刚在上面看到的<br><img src="/Jenkins%E6%95%99%E7%A8%8B/gitlab-login.png" alt="alt text"></li>
+<li>浏览器登录<br>访问地址就是gitlab.rb里配置的IP、端口，用户名就是root，密码就是你刚刚在上面看到的<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/gitlab-login.png" class="" title="alt text"></li>
 </ol>
 <p>遇到的问题及解决方案：</p>
 <ul>
@@ -69,14 +70,15 @@
 <li><p>第一次启动会报错，没有data目录的权限，进行如下修改</p>
 </li>
 </ol>
-<p><img src="/Jenkins%E6%95%99%E7%A8%8B/jenkins-data-noperm.png" alt="alt text"></p>
+<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/jenkins-data-noperm.png" class="" title="alt text">
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> -R 777 data</span><br></pre></td></tr></table></figure>
 <ol start="5">
 <li><p>重新启动</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br><span class="line">docker logs -f jenkins <span class="comment">#查看启动日志</span></span><br></pre></td></tr></table></figure>
-<p>等会就启动成功了<br><img src="/Jenkins%E6%95%99%E7%A8%8B/jenkins-success.png" alt="alt text"></p>
-</li>
-<li><p>浏览器访问，输入宿主机IP:刚刚在docker-compose.yml里配置的端口，用户名root，密码就是上面一步日志显示的<br><img src="/Jenkins%E6%95%99%E7%A8%8B/jenkins-login.png" alt="alt text"></p>
+<p>等会就启动成功了</p>
+<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/jenkins-success.png" class="" title="alt text"></li>
+<li><p>浏览器访问，输入宿主机IP:刚刚在docker-compose.yml里配置的端口，用户名root，密码就是上面一步日志显示的</p>
+<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/jenkins-login.png" class="" title="alt text">
 </li>
 <li><p>安装常用Jenkins插件</p>
 </li>
@@ -96,14 +98,19 @@
 <ol start="2">
 <li>配置Maven构建代码：构建jar包</li>
 </ol>
-<p>GitLab代码仓库Build中选择maven，配置参数为<br><img src="/Jenkins%E6%95%99%E7%A8%8B/maven-build.png" alt="alt text"></p>
+<p>GitLab代码仓库Build中选择maven，配置参数为</p>
+<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/maven-build.png" class="" title="alt text">
+
 <p>重新构建，然后查看构建日志，成功的话可以在target下看到构建好的jar包</p>
 <ol start="3">
 <li>推送jar包到远程服务器：Publish Over SSH</li>
 </ol>
-<p>3.1）配置目标服务器<br>在系统管理-全局设置中，配置SSH服务器，注意：需要加上密码，并测试连接。<br><img src="/Jenkins%E6%95%99%E7%A8%8B/target-server.png" alt="alt text"></p>
+<p>3.1）配置目标服务器<br>在系统管理-全局设置中，配置SSH服务器，注意：需要加上密码，并测试连接。</p>
+<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/target-server.png" class="" title="alt text">
+
 <p>3.2）配置transfer jar包到目标服务器</p>
-<p><img src="/Jenkins%E6%95%99%E7%A8%8B/publish-over-ssh.png" alt="alt text"></p>
+<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/publish-over-ssh.png" class="" title="alt text">
+
 <p>然后重新构建，就能在目标服务器的路径下看到jar包了 </p>
 <p>3.3）设置自动生成镜像、自动运行容器</p>
 <p>注意两个点：</p>
@@ -111,8 +118,12 @@
 <li>写文件夹的绝对路径</li>
 <li>运行端口不要和已经用的端口发生冲突</li>
 </ul>
-<p>3.4）基于版本号拉取、构建项目 — 实践中可以根据版本号快速把线上系统回滚到前一个版本<br>1、配置Git Parameter为根据tag拉取<br><img src="/Jenkins%E6%95%99%E7%A8%8B/gitparameter.png" alt="alt text"></p>
-<p>2、maven构建之前增加shell，根据代码tag构建相应版本的代码<br><img src="/Jenkins%E6%95%99%E7%A8%8B/checkout.png" alt="alt text"></p>
+<p>3.4）基于版本号拉取、构建项目 — 实践中可以根据版本号快速把线上系统回滚到前一个版本<br>1、配置Git Parameter为根据tag拉取</p>
+<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/gitparameter.png" class="" title="alt text">
+
+<p>2、maven构建之前增加shell，根据代码tag构建相应版本的代码</p>
+<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/checkout.png" class="" title="alt text">
+
 <ol start="4">
 <li><p>集成SonarQube<br>下载SonarQube镜像，开启SonarQube容器</p>
 </li>
@@ -121,10 +132,10 @@
 </ol>
 <p>5.1）手动推送镜像到Harbor</p>
 <p> 想要把镜像推送到Harbor仓库中：</p>
-<p> 1、镜像命名规则必须符合：<code>harbor地址/harbor项目名/镜像名:版本号</code>，然后才能将其推送到指定Harbor仓库中（注意：不是直接修改镜像名，还是同一个镜像，只不过该镜像追加一个符合上述规则的标识）<br> <img src="/Jenkins%E6%95%99%E7%A8%8B/harbor-tag.png" alt="alt text"></p>
-<p> 2、在<code>daemon.json</code>中配置好Harbor地址<br> <img src="/Jenkins%E6%95%99%E7%A8%8B/harbor-daemon.png" alt="alt text"><br> 注意重启Docker：<code>systemctl restart docker</code></p>
+<p> 1、镜像命名规则必须符合：<code>harbor地址/harbor项目名/镜像名:版本号</code>，然后才能将其推送到指定Harbor仓库中（注意：不是直接修改镜像名，还是同一个镜像，只不过该镜像追加一个符合上述规则的标识）<br> <img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/harbor-tag.png" class="" title="alt text"></p>
+<p> 2、在<code>daemon.json</code>中配置好Harbor地址<br> <img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/harbor-daemon.png" class="" title="alt text"><br> 注意重启Docker：<code>systemctl restart docker</code></p>
 <p> 3、登陆Harbor、推送<br> <img src="/image.png" alt="alt text"></p>
-<p> 4、测试从Harbor仓库拉取镜像到本地<br> <code>docker pull harbor地址/harbor项目名/镜像名:版本号</code><br> <img src="/Jenkins%E6%95%99%E7%A8%8B/harbor-pull.png" alt="alt text"></p>
+<p> 4、测试从Harbor仓库拉取镜像到本地<br> <code>docker pull harbor地址/harbor项目名/镜像名:版本号</code><br> <img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/harbor-pull.png" class="" title="alt text"></p>
 <blockquote>
 <p>这个<code>CREATED</code>是这个镜像最初始创建的时间，不是拉取时间。</p>
 </blockquote>
@@ -133,37 +144,51 @@
 <ul>
 <li><p>设置文件<code>/var/run/docker.sock</code>的所属用户组和权限：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chown</span> root:root docker.sock</span><br><span class="line"><span class="built_in">chmod</span> o+rw docker.sock</span><br></pre></td></tr></table></figure></li>
-<li><p>修改jenkins的docker-compose.yml文件中的目录映射：<br><img src="/Jenkins%E6%95%99%E7%A8%8B/jenkins-docker-set.png" alt="alt text"></p>
+<li><p>修改jenkins的docker-compose.yml文件中的目录映射：</p>
+<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/jenkins-docker-set.png" class="" title="alt text">
 </li>
-<li><p>进入Jenkins内部执行docker命令看看能用吗<br><img src="/Jenkins%E6%95%99%E7%A8%8B/jenkins-docker-cmd.png" alt="alt text"><br>2、修改Jenkins流程</p>
+<li><p>进入Jenkins内部执行docker命令看看能用吗</p>
+<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/jenkins-docker-cmd.png" class="" title="alt text">
+<p>2、修改Jenkins流程</p>
 </li>
-<li><p>删掉“构建后部署”相关的文件传输、启动容器操作<br><img src="/Jenkins%E6%95%99%E7%A8%8B/del-deploy.png" alt="alt text"></p>
+<li><p>删掉“构建后部署”相关的文件传输、启动容器操作</p>
+<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/del-deploy.png" class="" title="alt text">
 </li>
 <li><p>添加一步执行shell的步骤，用于制作部署包的镜像</p>
 </li>
 </ul>
 <p><font color="red"> 注意：这个步骤一定要放在 构建后操作 - Send build artifacts over SSH，否则会一直报错找不到<code>deploy.sh</code>文件！！！</font></p>
-<p><img src="/Jenkins%E6%95%99%E7%A8%8B/deploy.png" alt="alt text"></p>
+<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/deploy.png" class="" title="alt text">
+
 <p>之前我放在了<code>Build Steps</code>里，一直报错找不到deploy.sh文件。。。</p>
-<p>deploy.sh实现的功能：<br><img src="/Jenkins%E6%95%99%E7%A8%8B/deploy-instruction.png" alt="alt text"></p>
+<p>deploy.sh实现的功能：</p>
+<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/deploy-instruction.png" class="" title="alt text">
+
 <p>deploy.sh样例：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">harbor_addr=<span class="variable">$1</span></span><br><span class="line">harbor_repo=<span class="variable">$2</span></span><br><span class="line">project=<span class="variable">$3</span></span><br><span class="line">version=<span class="variable">$4</span></span><br><span class="line">host_port=<span class="variable">$5</span></span><br><span class="line">container_port=<span class="variable">$6</span></span><br><span class="line"></span><br><span class="line">imageName=<span class="variable">$harbor_addr</span>/<span class="variable">$harbor_repo</span>/<span class="variable">$project</span>:<span class="variable">$version</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$imageName</span></span><br><span class="line"></span><br><span class="line">containerId=`docker ps -a | grep <span class="variable">$&#123;project&#125;</span> | awk <span class="string">&#x27;&#123;print $1&#125;&#x27;</span>`</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$containerId</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$containerId</span>&quot;</span> != <span class="string">&quot;&quot;</span> ] ; <span class="keyword">then</span></span><br><span class="line">  docker stop <span class="variable">$containerId</span></span><br><span class="line">  docker <span class="built_in">rm</span> <span class="variable">$containerId</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">tag=`docker images | grep <span class="variable">$&#123;project&#125;</span> | awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>`</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$tag</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [[ <span class="string">&quot;<span class="variable">$tag</span>&quot;</span> =~ <span class="string">&quot;<span class="variable">$version</span>&quot;</span> ]] ; <span class="keyword">then</span></span><br><span class="line">  docker rmi <span class="variable">$imageName</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">docker login -u admin -p Harbor12345 <span class="variable">$harbor_addr</span></span><br><span class="line"></span><br><span class="line">docker pull <span class="variable">$imageName</span></span><br><span class="line"></span><br><span class="line">docker run -d -p <span class="variable">$host_port</span>:<span class="variable">$container_port</span> --name <span class="variable">$project</span> <span class="variable">$imageName</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h2 id="Jenkins发布项目-—-（二）流水线方式"><a href="#Jenkins发布项目-—-（二）流水线方式" class="headerlink" title="Jenkins发布项目 — （二）流水线方式"></a>Jenkins发布项目 — （二）流水线方式</h2><p>1、在Jenkins中安装插件<code>Pipeline Stage View</code>然后重启，可以看到阶段视图<br><img src="/Jenkins%E6%95%99%E7%A8%8B/pipeline-stage-view.png" alt="alt text"></p>
+<h2 id="Jenkins发布项目-—-（二）流水线方式"><a href="#Jenkins发布项目-—-（二）流水线方式" class="headerlink" title="Jenkins发布项目 — （二）流水线方式"></a>Jenkins发布项目 — （二）流水线方式</h2><p>1、在Jenkins中安装插件<code>Pipeline Stage View</code>然后重启，可以看到阶段视图</p>
+<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/pipeline-stage-view.png" class="" title="alt text">
+
 <h3 id="集成钉钉机器人"><a href="#集成钉钉机器人" class="headerlink" title="集成钉钉机器人"></a>集成钉钉机器人</h3><p>1、在钉钉群里加一个自定义机器人，记下关键词、webhook地址</p>
 <p>2、在Jenkins安装<code>DingTalk</code>插件，然后配上这个地址</p>
 <p>3、在流水线代码里加上状态通知逻辑</p>
 <p>注意：post和stages是同级</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">post &#123;</span><br><span class="line">        success &#123;</span><br><span class="line">            dingtalk(</span><br><span class="line">                robot: <span class="string">&#x27;Jenkins-DingDing&#x27;</span>,</span><br><span class="line">                <span class="built_in">type</span>: <span class="string">&#x27;MARKDOWN&#x27;</span>,</span><br><span class="line">                title: <span class="string">&quot;success: <span class="variable">$&#123;JOB_NAME&#125;</span>&quot;</span>,</span><br><span class="line">                text: [<span class="string">&quot;- 成功构建：<span class="variable">$&#123;JOB_NAME&#125;</span>！ \n - 版本：<span class="variable">$&#123;tag&#125;</span> \n - 持续时间：<span class="variable">$&#123;currentBuild.durationString&#125;</span> &quot;</span>]</span><br><span class="line">            )</span><br><span class="line">        &#125;</span><br><span class="line">        failure &#123;</span><br><span class="line">            dingtalk(</span><br><span class="line">                robot: <span class="string">&#x27;Jenkins-DingDing&#x27;</span>,</span><br><span class="line">                <span class="built_in">type</span>: <span class="string">&#x27;MARKDOWN&#x27;</span>,</span><br><span class="line">                title: <span class="string">&quot;failed: <span class="variable">$&#123;JOB_NAME&#125;</span>&quot;</span>,</span><br><span class="line">                text: [<span class="string">&quot;- 构建失败：<span class="variable">$&#123;JOB_NAME&#125;</span>！ \n - 版本：<span class="variable">$&#123;tag&#125;</span> \n - 持续时间：<span class="variable">$&#123;currentBuild.durationString&#125;</span> &quot;</span>]</span><br><span class="line">            )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>4、之后再构建代码，就会用钉钉机器人自动推送成功\失败的消息了<br><img src="/Jenkins%E6%95%99%E7%A8%8B/dingding.png" alt="alt text"></p>
+<p>4、之后再构建代码，就会用钉钉机器人自动推送成功\失败的消息了</p>
+<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/dingding.png" class="" title="alt text">
+
+
 <h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><ul>
-<li><b>Jenkins系统配置中配置GitLab时，正确输入了Gitlab host URL和Credentials，但是点击“Test Connection”时，始终报错Client error: HTTP 302 Found </b><br><img src="/Jenkins%E6%95%99%E7%A8%8B/gitlab-error1.png" alt="alt text"></li>
+<li><b>Jenkins系统配置中配置GitLab时，正确输入了Gitlab host URL和Credentials，但是点击“Test Connection”时，始终报错Client error: HTTP 302 Found </b><img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/gitlab-error1.png" class="" title="alt text"></li>
 </ul>
 <p>原因：host URL的问题</p>
-<p>解决方法： host URL换成服务器的ip<br><img src="/Jenkins%E6%95%99%E7%A8%8B/gitlab-error2.png" alt="alt text"></p>
+<p>解决方法： host URL换成服务器的ip</p>
+<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/gitlab-error2.png" class="" title="alt text">
+
 <ul>
-<li><b>在SonarQube这一步，一直报错<code>ERROR: SonarQube server [http://localhost:9000] can not be reached</code>但我之前已经在Jenkins的全局配置中设置过SonarQube Server的IP，并且之前也能正常用。。。</b><br><img src="/Jenkins%E6%95%99%E7%A8%8B/sonar-error.png" alt="alt text"></li>
+<li><b>在SonarQube这一步，一直报错<code>ERROR: SonarQube server [http://localhost:9000] can not be reached</code>但我之前已经在Jenkins的全局配置中设置过SonarQube Server的IP，并且之前也能正常用。。。</b><img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/sonar-error.png" class="" title="alt text"></li>
 </ul>
 <p>原因（GPT分析出来的）： Jenkins 全局配置未正确应用，如果你已经在 Jenkins 全局配置中配置了 SonarQube 的 IP 地址，确保在 Pipeline 脚本中正确使用该配置。</p>
 <p>解决办法：在流水线语法中加入代码withSonarQubeEnv指定SonarCube容器名</p>
@@ -191,5 +216,6 @@
 <p>3）流水线中用的相对路径不对，改为绝对路径之后就可以了。</p>
 <p>比如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> ./target/*.jar ./docker/</span><br><span class="line">docker build --no-cache -t <span class="variable">$JOB_NAME</span>:<span class="variable">$tag</span> ./docker/</span><br></pre></td></tr></table></figure>
-<p><img src="/Jenkins%E6%95%99%E7%A8%8B/path-rela.png" alt="alt text"></p>
+<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/path-rela.png" class="" title="alt text">
+
 <div class="post-tags"><a class="post-tag-link" href="/tags/Jenkins/" rel="tag">#Jenkins</a></div></article><div id="paginator"></div></div></div><div id="bottom-outer"><div id="bottom-inner"><hr><div><div><a>2024</a><a href="/atom.xml"></a></div><div id="hexo"><a>@jinzbone 版权所有</a></div></div></div></div></div></body><script src="/js/oasis.js"></script></html>
