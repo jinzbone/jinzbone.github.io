@@ -1,5 +1,15 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Jenkins教程 │ 我的个人博客</title><link rel="stylesheet" href="/css/oasis.css"><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="我的个人博客" type="application/atom+xml">
-</head><body><div id="content"><h1 id="title">Jenkins教程</h1><div id="menu-outer"><nav id="menu-inner"><a id="menu-back" href="javascript:history.back()">Back</a><time datetime="2024-08-20T15:49:37.000Z">2024-08-20</time></nav></div><div id="content-outer"><div id="content-inner"><article id="post"><h1 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a>Jenkins</h1><p>大多数互联网公司会使用Jenkins配合GitLab、Docker、K8s作为实现DevOps的核心工具。</p>
+</head><body><div id="content"><h1 id="title">Jenkins教程</h1><div id="menu-outer"><nav id="menu-inner"><a id="menu-back" href="javascript:history.back()">Back</a><time datetime="2024-08-20T15:49:37.000Z">2024-08-20</time></nav></div><div id="content-outer"><div id="content-inner"><article id="post"><style>
+ body {
+    /* font-family: "宋体", SimSun, serif; */
+    font-size: 16px;
+  }
+   p {
+    line-height: 1.7;
+  }
+</style>
+
+<h1 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a>Jenkins</h1><p>大多数互联网公司会使用Jenkins配合GitLab、Docker、K8s作为实现DevOps的核心工具。</p>
 <blockquote>
 <p>用Jenkins把整个环境跑起来需要至少4台虚拟机，16GB以上的运行内存</p>
 </blockquote>
@@ -12,19 +22,32 @@
 </ul>
 <p>Jenkins安装：</p>
 <ul>
-<li>服务器安装GitLab（准备环境）</li>
-<li>Jenkins宿主机安装Maven、JDK（需要配置）</li>
-<li>通过Docker安装Jenkins</li>
-<li>在Jenkins安装需要的插件（需要网络）</li>
-<li>把jdk和maven挪到Jenkins的data目录并修改home目录</li>
+<li><p>服务器安装GitLab（准备环境）</p>
+</li>
+<li><p>Jenkins宿主机安装Maven、JDK（需要配置）</p>
+</li>
+<li><p>通过Docker安装Jenkins</p>
+</li>
+<li><p>在Jenkins安装需要的插件（需要网络）</p>
+</li>
+<li><p>把jdk和maven挪到Jenkins的data目录并修改home目录</p>
+</li>
 </ul>
-<p>1、在Linux服务器上装GitLab服务端（后面Jenkins也是要装在Linux环境的）<br>2、研发人员和Jenkins都安装GitLab客户端，研发人员访问GitLab服务器推送研发完的代码，Jenkins访问GitLab服务器拉取代码</p>
+<p>1、在Linux服务器上装GitLab服务端（后面Jenkins也是要装在Linux环境的）</p>
+<p>2、研发人员和Jenkins都安装GitLab客户端，研发人员访问GitLab服务器推送研发完的代码，Jenkins访问GitLab服务器拉取代码</p>
 <p>Windows安装Ubuntu虚拟机</p>
 <h2 id="服务器安装GitLab"><a href="#服务器安装GitLab" class="headerlink" title="服务器安装GitLab"></a>服务器安装GitLab</h2><ol>
-<li><a herf="https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/">下载Gitlab的rpm包至本地</a>（本来要通过docker安装，但是网络下载不下来，就直接在服务器上安装了）</li>
-<li>使用yum安装gitlab<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh gitlab-ce-16.11.8-ce.0.el7.x86_64.rpm</span><br></pre></td></tr></table></figure></li>
-<li>编辑配置文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/gitlab/gitlab.rb</span><br></pre></td></tr></table></figure>
-把里面的<code>external</code>值改为服务器的IP和端口（就是之后你通过浏览器访问的地址）<br><img src="/Jenkins%E6%95%99%E7%A8%8B/gitlab-ip.png" alt="alt text"></li>
+<li><p><a herf="https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/">下载Gitlab的rpm包至本地</a>（本来要通过docker安装，但是网络下载不下来，就直接在服务器上安装了）</p>
+</li>
+<li><p>使用yum安装gitlab</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh gitlab-ce-16.11.8-ce.0.el7.x86_64.rpm</span><br></pre></td></tr></table></figure></li>
+<li><p>编辑配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/gitlab/gitlab.rb</span><br></pre></td></tr></table></figure>
+<p>把里面的<code>external</code>值改为服务器的IP和端口（就是之后你通过浏览器访问的地址）</p>
+</li>
+</ol>
+<p><img src="/Jenkins%E6%95%99%E7%A8%8B/gitlab-ip.png" alt="alt text"></p>
+<ol start="4">
 <li>启动GitLab<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-ctl reconfigure</span><br></pre></td></tr></table></figure></li>
 <li>查看默认登陆密码<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/gitlab/initial_root_password</span><br></pre></td></tr></table></figure></li>
 <li>浏览器登录<br>访问地址就是gitlab.rb里配置的IP、端口，用户名就是root，密码就是你刚刚在上面看到的<br><img src="/Jenkins%E6%95%99%E7%A8%8B/gitlab-login.png" alt="alt text"></li>
