@@ -51,8 +51,12 @@
 <ol start="4">
 <li>启动GitLab<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-ctl reconfigure</span><br></pre></td></tr></table></figure></li>
 <li>查看默认登陆密码<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/gitlab/initial_root_password</span><br></pre></td></tr></table></figure></li>
-<li>浏览器登录<br>访问地址就是gitlab.rb里配置的IP、端口，用户名就是root，密码就是你刚刚在上面看到的<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/gitlab-login.png" class="" title="alt text"></li>
+<li>浏览器登录</li>
 </ol>
+<p>访问地址就是gitlab.rb里配置的IP、端口，用户名就是root，密码就是你刚刚在上面看到的</p>
+<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/gitlab-login.png" class="" title="alt text">
+
+
 <p>遇到的问题及解决方案：</p>
 <ul>
 <li><a herf="https://www.cnblogs.com/Mr-Worlf/p/16572629.html">GitLab启动完成后访问不到页面</a></li>
@@ -84,10 +88,14 @@
 </li>
 </ol>
 <ul>
-<li>Git Parameter</li>
-<li>Publish Over SSH</li>
-<li>Locale<br>安装完插件之后重启Jenkins生效（方法是把浏览器地址后缀改为&#x2F;restart，然后回车、确认重启）</li>
+<li><p>Git Parameter</p>
+</li>
+<li><p>Publish Over SSH</p>
+</li>
+<li><p>Locale</p>
+</li>
 </ul>
+<p>安装完插件之后重启Jenkins生效（方法是把浏览器地址后缀改为&#x2F;restart，然后回车、确认重启）</p>
 <h2 id="Jenkins安装Maven、JDK"><a href="#Jenkins安装Maven、JDK" class="headerlink" title="Jenkins安装Maven、JDK"></a>Jenkins安装Maven、JDK</h2><ol>
 <li>把Maven、JDK移动到Jenkins的data目录下</li>
 </ol>
@@ -105,7 +113,8 @@
 <ol start="3">
 <li>推送jar包到远程服务器：Publish Over SSH</li>
 </ol>
-<p>3.1）配置目标服务器<br>在系统管理-全局设置中，配置SSH服务器，注意：需要加上密码，并测试连接。</p>
+<p>3.1）配置目标服务器</p>
+<p>在系统管理-全局设置中，配置SSH服务器，注意：需要加上密码，并测试连接。</p>
 <img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/target-server.png" class="" title="alt text">
 
 <p>3.2）配置transfer jar包到目标服务器</p>
@@ -115,42 +124,52 @@
 <p>3.3）设置自动生成镜像、自动运行容器</p>
 <p>注意两个点：</p>
 <ul>
-<li>写文件夹的绝对路径</li>
-<li>运行端口不要和已经用的端口发生冲突</li>
+<li><p>写文件夹的绝对路径</p>
+</li>
+<li><p>运行端口不要和已经用的端口发生冲突</p>
+</li>
 </ul>
-<p>3.4）基于版本号拉取、构建项目 — 实践中可以根据版本号快速把线上系统回滚到前一个版本<br>1、配置Git Parameter为根据tag拉取</p>
+<p>3.4）基于版本号拉取、构建项目 — 实践中可以根据版本号快速把线上系统回滚到前一个版本</p>
+<p>1、配置Git Parameter为根据tag拉取</p>
 <img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/gitparameter.png" class="" title="alt text">
 
 <p>2、maven构建之前增加shell，根据代码tag构建相应版本的代码</p>
 <img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/checkout.png" class="" title="alt text">
 
 <ol start="4">
-<li><p>集成SonarQube<br>下载SonarQube镜像，开启SonarQube容器</p>
-</li>
-<li><p>集成Harbor</p>
-</li>
+<li>集成SonarQube</li>
+</ol>
+<p>下载SonarQube镜像，开启SonarQube容器</p>
+<ol start="5">
+<li>集成Harbor</li>
 </ol>
 <p>5.1）手动推送镜像到Harbor</p>
 <p> 想要把镜像推送到Harbor仓库中：</p>
 <p> 1、镜像命名规则必须符合：<code>harbor地址/harbor项目名/镜像名:版本号</code>，然后才能将其推送到指定Harbor仓库中（注意：不是直接修改镜像名，还是同一个镜像，只不过该镜像追加一个符合上述规则的标识）<br> <img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/harbor-tag.png" class="" title="alt text"></p>
 <p> 2、在<code>daemon.json</code>中配置好Harbor地址<br> <img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/harbor-daemon.png" class="" title="alt text"><br> 注意重启Docker：<code>systemctl restart docker</code></p>
-<p> 3、登陆Harbor、推送<br> <img src="/image.png" alt="alt text"></p>
-<p> 4、测试从Harbor仓库拉取镜像到本地<br> <code>docker pull harbor地址/harbor项目名/镜像名:版本号</code><br> <img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/harbor-pull.png" class="" title="alt text"></p>
+<p> 3、登陆Harbor、推送<br> <img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/harbor-push.png" class="" title="alt text"></p>
+<p> 4、测试从Harbor仓库拉取镜像到本地</p>
+<p> <code>docker pull harbor地址/harbor项目名/镜像名:版本号</code></p>
+ <img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/harbor-pull.png" class="" title="alt text">
+
 <blockquote>
 <p>这个<code>CREATED</code>是这个镜像最初始创建的时间，不是拉取时间。</p>
 </blockquote>
 <p>5.2）自动推送镜像到Harbor</p>
 <p>1、配置Jenkin能使用Dockers命令</p>
 <ul>
-<li><p>设置文件<code>/var/run/docker.sock</code>的所属用户组和权限：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chown</span> root:root docker.sock</span><br><span class="line"><span class="built_in">chmod</span> o+rw docker.sock</span><br></pre></td></tr></table></figure></li>
+<li>设置文件<code>/var/run/docker.sock</code>的所属用户组和权限：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chown</span> root:root docker.sock</span><br><span class="line"><span class="built_in">chmod</span> o+rw docker.sock</span><br></pre></td></tr></table></figure>
+<ul>
 <li><p>修改jenkins的docker-compose.yml文件中的目录映射：</p>
 <img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/jenkins-docker-set.png" class="" title="alt text">
 </li>
 <li><p>进入Jenkins内部执行docker命令看看能用吗</p>
-<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/jenkins-docker-cmd.png" class="" title="alt text">
+<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/jenkins-docker-cmd.png" class="" title="alt text"></li>
+</ul>
 <p>2、修改Jenkins流程</p>
-</li>
+<ul>
 <li><p>删掉“构建后部署”相关的文件传输、启动容器操作</p>
 <img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/del-deploy.png" class="" title="alt text">
 </li>
@@ -181,15 +200,19 @@
 
 
 <h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><ul>
-<li><b>Jenkins系统配置中配置GitLab时，正确输入了Gitlab host URL和Credentials，但是点击“Test Connection”时，始终报错Client error: HTTP 302 Found </b><img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/gitlab-error1.png" class="" title="alt text"></li>
+<li><b>Jenkins系统配置中配置GitLab时，正确输入了Gitlab host URL和Credentials，但是点击“Test Connection”时，始终报错Client error: HTTP 302 Found </b></li>
 </ul>
+<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/gitlab-error1.png" class="" title="alt text">
+
 <p>原因：host URL的问题</p>
 <p>解决方法： host URL换成服务器的ip</p>
 <img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/gitlab-error2.png" class="" title="alt text">
 
 <ul>
-<li><b>在SonarQube这一步，一直报错<code>ERROR: SonarQube server [http://localhost:9000] can not be reached</code>但我之前已经在Jenkins的全局配置中设置过SonarQube Server的IP，并且之前也能正常用。。。</b><img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/sonar-error.png" class="" title="alt text"></li>
+<li><b>在SonarQube这一步，一直报错<code>ERROR: SonarQube server [http://localhost:9000] can not be reached</code>但我之前已经在Jenkins的全局配置中设置过SonarQube Server的IP，并且之前也能正常用。。。</b></li>
 </ul>
+<img src="/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/sonar-error.png" class="" title="alt text">
+
 <p>原因（GPT分析出来的）： Jenkins 全局配置未正确应用，如果你已经在 Jenkins 全局配置中配置了 SonarQube 的 IP 地址，确保在 Pipeline 脚本中正确使用该配置。</p>
 <p>解决办法：在流水线语法中加入代码withSonarQubeEnv指定SonarCube容器名</p>
 <p>之前代码：</p>
@@ -200,12 +223,15 @@
 <ul>
 <li><b> 通过流水线在部署最后这一步经常报错：ERROR: Exception when publishing, exception message [Exec exit status not zero. Status [125]]</b><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">SSH: Connecting from host [b580d7d980cc]</span><br><span class="line">SSH: Connecting with configuration [deploy129] ...</span><br><span class="line">SSH: Creating session: username [root], hostname [192.168.126.129], port [22]</span><br><span class="line">SSH: Connecting session ...</span><br><span class="line">SSH: Connected</span><br><span class="line">SSH: Opening <span class="built_in">exec</span> channel ...</span><br><span class="line">SSH: EXEC: channel open</span><br><span class="line">SSH: EXEC: STDOUT/STDERR from <span class="built_in">command</span> [deploy.sh <span class="variable">$harborAddress</span> <span class="variable">$harborRepo</span> pipeline v4.0.1 8085 8080] ...</span><br><span class="line">SSH: EXEC: connected</span><br><span class="line">pipeline/v4.0.1/8085:8080</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">WARNING! Using --password via the CLI is insecure. Use --password-stdin.</span><br><span class="line">Error response from daemon: Get <span class="string">&quot;https://pipeline/v2/&quot;</span>: dial tcp: lookup pipeline on 192.168.126.2:53: no such host</span><br><span class="line">Error response from daemon: pull access denied <span class="keyword">for</span> pipeline/v4.0.1/8085, repository does not exist or may require <span class="string">&#x27;docker login&#x27;</span>: denied: requested access to the resource is denied</span><br><span class="line">docker: no port specified: :&lt;empty&gt;.</span><br><span class="line">See <span class="string">&#x27;docker run --help&#x27;</span>.</span><br><span class="line">SSH: EXEC: completed after 26,496 ms</span><br><span class="line">SSH: Disconnecting configuration [deploy129] ...</span><br><span class="line">ERROR: Exception when publishing, exception message [Exec <span class="built_in">exit</span> status not zero. Status [125]]</span><br><span class="line">[Pipeline] <span class="built_in">echo</span></span><br><span class="line">通过 Publish Over SSH 通知目标服务器 - SUCCESS</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>原因一直不好查到。。。3个注意点：<br>1）在SSH server中设置 verbose 开启，这样构建日志会显示shell的详细错误日志</p>
-<p>2）写流水线语法在部署这一步有错误，用的是jenkins自带的配置<br>我需要写的是这段：<br><code>deploy.sh $harborAddress $harborRepo $JOB_NAME $tag $host_port $container_port</code></p>
+<p>原因一直不好查到。。。3个注意点：</p>
+<p>1）在SSH server中设置 verbose 开启，这样构建日志会显示shell的详细错误日志</p>
+<p>2）写流水线语法在部署这一步有错误，用的是jenkins自带的配置<br>我需要写的是这段：</p>
+<p><code>deploy.sh $harborAddress $harborRepo $JOB_NAME $tag $host_port $container_port</code></p>
 <p>流水线语法自动生成的是这样的：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshPublisher(publishers: [sshPublisherDesc(configName: <span class="string">&#x27;deploy129&#x27;</span>, transfers: [sshTransfer(cleanRemote: <span class="literal">false</span>, excludes: <span class="string">&#x27;&#x27;</span>, execCommand: <span class="string">&#x27;deploy.sh $harborAddress $harborRepo $JOB_NAME $tag $host_port $container_port&#x27;</span>, execTimeout: 120000, flatten: <span class="literal">false</span>, makeEmptyDirs: <span class="literal">false</span>, noDefaultExcludes: <span class="literal">false</span>, patternSeparator: <span class="string">&#x27;[, ]+&#x27;</span>, remoteDirectory: <span class="string">&#x27;&#x27;</span>, remoteDirectorySDF: <span class="literal">false</span>, removePrefix: <span class="string">&#x27;&#x27;</span>, sourceFiles: <span class="string">&#x27;&#x27;</span>)], usePromotionTimestamp: <span class="literal">false</span>, useWorkspaceInPromotion: <span class="literal">false</span>, verbose: <span class="literal">true</span>)])</span><br></pre></td></tr></table></figure>
+
 <p>但是一直报错，ERROR: Exception when publishing, exception message [Exec exit status not zero. Status [125]]，经过GPT排查后，是生成代码里面<code>execCommand</code>后面的内容应该用双引号<code>&quot;</code>而不是单引号<code>&#39;</code>，修改如下才正常：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshPublisher(publishers: [sshPublisherDesc(configName: <span class="string">&#x27;deploy129&#x27;</span>, transfers: [sshTransfer(cleanRemote: <span class="literal">false</span>, excludes: <span class="string">&#x27;&#x27;</span>, execCommand: <span class="string">&quot;deploy.sh <span class="variable">$harborAddress</span> <span class="variable">$harborRepo</span> <span class="variable">$JOB_NAME</span> <span class="variable">$tag</span> <span class="variable">$host_port</span> <span class="variable">$container_port</span>&quot;</span>, execTimeout: 120000, flatten: <span class="literal">false</span>, makeEmptyDirs: <span class="literal">false</span>, noDefaultExcludes: <span class="literal">false</span>, patternSeparator: <span class="string">&#x27;[, ]+&#x27;</span>, remoteDirectory: <span class="string">&#x27;&#x27;</span>, remoteDirectorySDF: <span class="literal">false</span>, removePrefix: <span class="string">&#x27;&#x27;</span>, sourceFiles: <span class="string">&#x27;&#x27;</span>)], usePromotionTimestamp: <span class="literal">false</span>, useWorkspaceInPromotion: <span class="literal">false</span>, verbose: <span class="literal">true</span>)])</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><b> 整个流程都很顺利，但是，部署的代码版本并不是最新的，虽然确定GitLab中是最新代码、构建日志中也都是按最新tag拉取、构建的，但是最后在页面访问的时候还是旧版本 </b><br>原因：缓存</li>

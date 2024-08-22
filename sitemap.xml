@@ -2,9 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://jinzbone.github.io/2024/08/22/2024%E9%98%85%E8%AF%BB%E4%B9%A6%E5%8D%95/</loc>
+    
+    <lastmod>2024-08-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://jinzbone.github.io/2024/08/20/Jenkins%E6%95%99%E7%A8%8B/</loc>
     
-    <lastmod>2024-08-20</lastmod>
+    <lastmod>2024-08-22</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -67,7 +76,7 @@
 
   <url>
     <loc>https://jinzbone.github.io/</loc>
-    <lastmod>2024-08-20</lastmod>
+    <lastmod>2024-08-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -75,21 +84,28 @@
   
   <url>
     <loc>https://jinzbone.github.io/tags/Jenkins/</loc>
-    <lastmod>2024-08-20</lastmod>
+    <lastmod>2024-08-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://jinzbone.github.io/tags/%E7%AE%A1%E7%90%86/</loc>
-    <lastmod>2024-08-20</lastmod>
+    <lastmod>2024-08-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://jinzbone.github.io/tags/%E5%B0%8F%E8%AF%B4/</loc>
-    <lastmod>2024-08-20</lastmod>
+    <lastmod>2024-08-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jinzbone.github.io/tags/%E4%B9%A6%E5%8D%95/</loc>
+    <lastmod>2024-08-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -98,21 +114,21 @@
   
   <url>
     <loc>https://jinzbone.github.io/categories/Jenkins/</loc>
-    <lastmod>2024-08-20</lastmod>
+    <lastmod>2024-08-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://jinzbone.github.io/categories/%E7%AE%A1%E7%90%86/</loc>
-    <lastmod>2024-08-20</lastmod>
+    <lastmod>2024-08-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://jinzbone.github.io/categories/%E9%98%85%E8%AF%BB/</loc>
-    <lastmod>2024-08-20</lastmod>
+    <lastmod>2024-08-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
