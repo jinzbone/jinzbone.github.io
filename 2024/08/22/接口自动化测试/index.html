@@ -10,36 +10,36 @@
 </style>
 
 <p>接口测试和功能测试的区别：</p>
-
+<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/dif.png" class="" title="alt text">
 
 <p>接口测试：通过 工具 或 代码 进行脚本开发，接口测试时就是执行这个脚本，把遇到的缺陷进行跟踪，测完之后提交测试报告。</p>
-
+<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/jk-test-process.png" class="" title="alt text">
 
 <p>HTTP请求-请求头</p>
-
+<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/http-header.png" class="" title="alt text">
 
 <p>HTTP响应-状态码</p>
-
+<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/http-code.png" class="" title="alt text">
 
 <p>接口规范</p>
 <ul>
 <li>传统接口规范</li>
-<li>Restful接口规范</li>
+<li>Restful接口规范<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/jkgf-style.png" class="" title="alt text"></li>
 </ul>
 <p><b>测试流程：</b><br>先测试<font color='red'>核心业务流程</font>，然后再测单模块，进行更加细致的测试。</p>
-
+<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/cs-process.png" class="" title="alt text">
 <p>（1）测试接口业务流程</p>
 <p>（2）</p>
-<h2 id="Postman测试接口"><a href="#Postman测试接口" class="headerlink" title="Postman测试接口"></a>Postman测试接口</h2><h3 id="Postman中的公共容器：接口结果自动关联"><a href="#Postman中的公共容器：接口结果自动关联" class="headerlink" title="Postman中的公共容器：接口结果自动关联"></a>Postman中的公共容器：接口结果自动关联</h3>
+<h2 id="Postman测试接口"><a href="#Postman测试接口" class="headerlink" title="Postman测试接口"></a>Postman测试接口</h2><h3 id="Postman中的公共容器：接口结果自动关联"><a href="#Postman中的公共容器：接口结果自动关联" class="headerlink" title="Postman中的公共容器：接口结果自动关联"></a>Postman中的公共容器：接口结果自动关联</h3><img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/postman1.png" class="" title="alt text">
 
 <h3 id="Postman中的批量执行"><a href="#Postman中的批量执行" class="headerlink" title="Postman中的批量执行"></a>Postman中的批量执行</h3><p>把一套流程涉及的接口放到同一个集合中，然后执行这个集合</p>
+<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/postmanbatch.png" class="" title="alt text">
 
-
-<h3 id="接口用例设计思路"><a href="#接口用例设计思路" class="headerlink" title="接口用例设计思路"></a>接口用例设计思路</h3><h4 id="单接口测试"><a href="#单接口测试" class="headerlink" title="单接口测试"></a>单接口测试</h4>
+<h3 id="接口用例设计思路"><a href="#接口用例设计思路" class="headerlink" title="接口用例设计思路"></a>接口用例设计思路</h3><h4 id="单接口测试"><a href="#单接口测试" class="headerlink" title="单接口测试"></a>单接口测试</h4><img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/danjiekou.png" class="" title="alt text">
 
 <p>（1）测试点<br>（2）针对测试点编写相应测试用例<br>（3）使用Postman进行接口测试</p>
-<p>以“用户登陆”接口为例来说：<br>（1）测试点<br>    - 已注册正确的用户名和密码，登陆成功<br>    - 用户名或密码错误，登录失败，提示“用户名或密码错误”<br>    <br>（2）针对测试点编写相应测试用例<br>    <br>（3）使用Postman进行接口测试</p>
-<h3 id="Postman中的断言"><a href="#Postman中的断言" class="headerlink" title="Postman中的断言"></a>Postman中的断言</h3>
+<p>以“用户登陆”接口为例来说：<br>（1）测试点<br>    - 已注册正确的用户名和密码，登陆成功<br>    - 用户名或密码错误，登录失败，提示“用户名或密码错误”<br>    <img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/ceshidian.png" class="" title="alt text"><br>（2）针对测试点编写相应测试用例<br>    <img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/ceshiyongli.png" class="" title="alt text"><br>（3）使用Postman进行接口测试</p>
+<h3 id="Postman中的断言"><a href="#Postman中的断言" class="headerlink" title="Postman中的断言"></a>Postman中的断言</h3><img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/postmanassert.png" class="" title="alt text">
 
 <ol>
 <li><p>响应状态码断言</p>
