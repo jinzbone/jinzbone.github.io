@@ -9,7 +9,19 @@
   }
 </style>
 
-<p>接口测试和功能测试的区别：</p>
+<h2 id="测试的类别"><a href="#测试的类别" class="headerlink" title="测试的类别"></a>测试的类别</h2><ul>
+<li><p>单元测试：目的是验证单个模块或函数的正确性，通常<font color='green'>由开发人员编写和执行</font>。常用工具包括 JUnit（Java）、pytest（Python）、JUnit（JavaScript）等。</p>
+</li>
+<li><p>接口测试：验证软件系统各组件之间通过接口进行的交互是否正确，确保数据交换符合预期。<font color='green'> 可以由开发人员或测试人员执行</font>。常用工具包括 Postman、Swagger、SoapUI、JMeter 等。</p>
+</li>
+<li><p>集成测试（联调）：</p>
+</li>
+<li><p>功能测试：测试系统跳转、核心业务逻辑</p>
+</li>
+<li><p>系统测试（包括功能测试和性能测试）：</p>
+</li>
+</ul>
+<h2 id="手动测试-—-Postman"><a href="#手动测试-—-Postman" class="headerlink" title="手动测试 — Postman"></a>手动测试 — Postman</h2><p>接口测试和功能测试的区别：</p>
 <img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/dif.png" class="" title="alt text">
 
 <p>接口测试：通过 工具 或 代码 进行脚本开发，接口测试时就是执行这个脚本，把遇到的缺陷进行跟踪，测完之后提交测试报告。</p>
@@ -26,8 +38,10 @@
 <li>传统接口规范</li>
 <li>Restful接口规范<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/jkgf-style.png" class="" title="alt text"></li>
 </ul>
-<p><b>测试流程：</b><br>先测试<font color='red'>核心业务流程</font>，然后再测单模块，进行更加细致的测试。</p>
+<p><b>测试流程：</b></p>
+<p>先测试<font color='red'>核心业务流程</font>，然后再测单模块，进行更加细致的测试。</p>
 <img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/cs-process.png" class="" title="alt text">
+
 <p>（1）测试接口业务流程</p>
 <p>（2）</p>
 <h2 id="Postman测试接口"><a href="#Postman测试接口" class="headerlink" title="Postman测试接口"></a>Postman测试接口</h2><h3 id="Postman中的公共容器：接口结果自动关联"><a href="#Postman中的公共容器：接口结果自动关联" class="headerlink" title="Postman中的公共容器：接口结果自动关联"></a>Postman中的公共容器：接口结果自动关联</h3><img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/postman1.png" class="" title="alt text">
@@ -39,7 +53,8 @@
 
 <p>（1）测试点<br>（2）针对测试点编写相应测试用例<br>（3）使用Postman进行接口测试</p>
 <p>以“用户登陆”接口为例来说：<br>（1）测试点<br>    - 已注册正确的用户名和密码，登陆成功<br>    - 用户名或密码错误，登录失败，提示“用户名或密码错误”<br>    <img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/ceshidian.png" class="" title="alt text"><br>（2）针对测试点编写相应测试用例<br>    <img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/ceshiyongli.png" class="" title="alt text"><br>（3）使用Postman进行接口测试</p>
-<h3 id="Postman中的断言"><a href="#Postman中的断言" class="headerlink" title="Postman中的断言"></a>Postman中的断言</h3><img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/postmanassert.png" class="" title="alt text">
+<h3 id="Postman中的断言"><a href="#Postman中的断言" class="headerlink" title="Postman中的断言"></a>Postman中的断言</h3><p>让工具代替人工<font color='red'>自动判断 </font>预期结果和实际结果是否一致</p>
+<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/postmanassert.png" class="" title="alt text">
 
 <ol>
 <li><p>响应状态码断言</p>
@@ -50,4 +65,81 @@
 </li>
 </ol>
 <p>使用方式：</p>
-<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/postmanassert2.png" class="" title="alt text"><div class="post-tags"><a class="post-tag-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">#测试</a></div></article><div id="paginator"></div></div></div><div id="bottom-outer"><div id="bottom-inner"><hr><div><div><a>2024</a><a href="/atom.xml"></a></div><div id="hexo"><a>@jinzbone 版权所有</a></div></div></div></div></div></body><script src="/js/oasis.js"></script></html>
+<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/postmanassert2.png" class="" title="alt text">
+
+<h3 id="Postman中的参数化"><a href="#Postman中的参数化" class="headerlink" title="Postman中的参数化"></a>Postman中的参数化</h3><p>测试某个接口时的全部测试用例（正例、负例），为了避免接口重复性，把准备的全部测试用例中用到的请求参数、响应结果，都存到一个文本文件中，然后测试这个接口的时候（放到一个集合里）选择文本文件中的测试用例，批量跑，然后查看断言即可知道是否符合预期了。</p>
+
+
+
+
+<h3 id="样例：单接口测试"><a href="#样例：单接口测试" class="headerlink" title="样例：单接口测试"></a>样例：单接口测试</h3><p>（1）提取测试点</p>
+
+
+<p>（2）设计测试用例</p>
+<p>正例（P2）优先级高于负例优先级（P3）</p>
+
+
+
+
+
+
+<p>（3）执行测试用例</p>
+<p>先在Postman中创建一个文件夹，然后对照测试用例一一输入，比对实际结果与预期结果是否一致：</p>
+<ul>
+<li>如果不一致则该测试用例不通过，结果为<code>fail</code></li>
+<li>如果一致则该测试用例通过，结果为<code>pass</code></li>
+</ul>
+<h2 id="接口自动化测试-—"><a href="#接口自动化测试-—" class="headerlink" title="接口自动化测试 —"></a>接口自动化测试 —</h2><p>接口自动化测试：使用工具或代码代替人对接口进行测试的技术。</p>
+<p>测试目的：防止开发修改代码时引入新的问题。</p>
+<p>测试时机：</p>
+<ul>
+<li><p>提测前，可以先进行接口自动化脚本的编写</p>
+</li>
+<li><p>提测后，优先进行系统测试用例的执行，再进行接口自动化脚本的编写</p>
+</li>
+</ul>
+<p>接口自动化测试流程：</p>
+
+
+<p>（1）选取自动化测试用例：优先实现<code>业务流程</code>用例，后实现<code>单接口用例</code>。</p>
+<p>（2、3）搭建自动化测试环境（Python）、自动化测试框架（pytest）</p>
+<p>用到的核心库是<code>requests</code>库：<code>pip install requests</code></p>
+
+
+<ul>
+<li>requests库发生请求的方法</li>
+</ul>
+<p>requests发送请求的方法：<code>requests.请求方法(url, params=None, data=None, json=None headers=None)</code></p>
+
+
+<ul>
+<li>requests库查看响应的方法</li>
+</ul>
+
+
+<p>发送请求及获取响应的例子：</p>
+
+
+
+<p>（4）代码实现自动化</p>
+<ul>
+<li>单接口测试—批量执行测试用例</li>
+</ul>
+<p>利用<code>pytest.mark.parametrize</code>实现批量执行</p>
+<ul>
+<li>单接口测试—测试用例与代码分离</li>
+</ul>
+<p>把测试用例存放到.json文件中，然后代码读取</p>
+<ul>
+<li>项目配置文件.ini（用于上线之后回归测试方便）</li>
+</ul>
+<p>（5） 输出测试报告</p>
+<ul>
+<li>Allure测试报告</li>
+</ul>
+
+
+
+
+
+<div class="post-tags"><a class="post-tag-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">#测试</a></div></article><div id="paginator"></div></div></div><div id="bottom-outer"><div id="bottom-inner"><hr><div><div><a>2024</a><a href="/atom.xml"></a></div><div id="hexo"><a>@jinzbone 版权所有</a></div></div></div></div></div></body><script src="/js/oasis.js"></script></html>
