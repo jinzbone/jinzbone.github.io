@@ -68,20 +68,20 @@
 <img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/postmanassert2.png" class="" title="alt text">
 
 <h3 id="Postman中的参数化"><a href="#Postman中的参数化" class="headerlink" title="Postman中的参数化"></a>Postman中的参数化</h3><p>测试某个接口时的全部测试用例（正例、负例），为了避免接口重复性，把准备的全部测试用例中用到的请求参数、响应结果，都存到一个文本文件中，然后测试这个接口的时候（放到一个集合里）选择文本文件中的测试用例，批量跑，然后查看断言即可知道是否符合预期了。</p>
+<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/postmanparam.png" class="" title="alt text">
 
-
-
+<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/postmanparam2.png" class="" title="alt text">
 
 <h3 id="样例：单接口测试"><a href="#样例：单接口测试" class="headerlink" title="样例：单接口测试"></a>样例：单接口测试</h3><p>（1）提取测试点</p>
-
+<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/single-jk.png" class="" title="alt text">
 
 <p>（2）设计测试用例</p>
 <p>正例（P2）优先级高于负例优先级（P3）</p>
+<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/single-yl0.png" class="" title="alt text">
 
+<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/single-yl1.png" class="" title="alt text">
 
-
-
-
+<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/single-yl2.png" class="" title="alt text">
 
 <p>（3）执行测试用例</p>
 <p>先在Postman中创建一个文件夹，然后对照测试用例一一输入，比对实际结果与预期结果是否一致：</p>
@@ -99,26 +99,26 @@
 </li>
 </ul>
 <p>接口自动化测试流程：</p>
-
+<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/jkcsprocess.png" class="" title="alt text">
 
 <p>（1）选取自动化测试用例：优先实现<code>业务流程</code>用例，后实现<code>单接口用例</code>。</p>
 <p>（2、3）搭建自动化测试环境（Python）、自动化测试框架（pytest）</p>
 <p>用到的核心库是<code>requests</code>库：<code>pip install requests</code></p>
-
+<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/pytestframe.png" class="" title="alt text">
 
 <ul>
 <li>requests库发生请求的方法</li>
 </ul>
 <p>requests发送请求的方法：<code>requests.请求方法(url, params=None, data=None, json=None headers=None)</code></p>
-
+<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/requests1.png" class="" title="alt text">
 
 <ul>
 <li>requests库查看响应的方法</li>
 </ul>
-
+<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/response1.png" class="" title="alt text">
 
 <p>发送请求及获取响应的例子：</p>
-
+<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/sendandres.png" class="" title="alt text">
 
 
 <p>（4）代码实现自动化</p>
@@ -137,9 +137,9 @@
 <ul>
 <li>Allure测试报告</li>
 </ul>
+<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/testresult.png" class="" title="alt text">
 
 
+<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/alluresult.png" class="" title="alt text">
 
-
-
-<div class="post-tags"><a class="post-tag-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">#测试</a></div></article><div id="paginator"></div></div></div><div id="bottom-outer"><div id="bottom-inner"><hr><div><div><a>2024</a><a href="/atom.xml"></a></div><div id="hexo"><a>@jinzbone 版权所有</a></div></div></div></div></div></body><script src="/js/oasis.js"></script></html>
+<img src="/2024/08/22/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/alluresult2.png" class="" title="alt text"><div class="post-tags"><a class="post-tag-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">#测试</a></div></article><div id="paginator"></div></div></div><div id="bottom-outer"><div id="bottom-inner"><hr><div><div><a>2024</a><a href="/atom.xml"></a></div><div id="hexo"><a>@jinzbone 版权所有</a></div></div></div></div></div></body><script src="/js/oasis.js"></script></html>
