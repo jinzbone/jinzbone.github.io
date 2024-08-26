@@ -6,7 +6,7 @@
   <link href="https://jinzbone.github.io/atom.xml" rel="self"/>
   
   <link href="https://jinzbone.github.io/"/>
-  <updated>2024-08-26T02:39:31.895Z</updated>
+  <updated>2024-08-26T06:14:47.345Z</updated>
   <id>https://jinzbone.github.io/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>论文阅读：Cyber Threat Intelligence Modeling Based on Heterogeneous Graph</title>
+    <link href="https://jinzbone.github.io/2024/08/26/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9ACyber-Threat-Intelligence-Modeling-Based-on-Heterogeneous-Graph/"/>
+    <id>https://jinzbone.github.io/2024/08/26/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9ACyber-Threat-Intelligence-Modeling-Based-on-Heterogeneous-Graph/</id>
+    <published>2024-08-26T06:13:27.000Z</published>
+    <updated>2024-08-26T06:14:47.345Z</updated>
+    
+    <content type="html"><![CDATA[<style> body {    /* font-family: "宋体", SimSun, serif; */    font-size: 16px;  }   p {    line-height: 1.7;  }</style><ul><li>论文标题：Cyber Threat Intelligence Modeling Based on Heterogeneous Graph Convolutional Network</li><li>原文作者：Jun Zhao, Qiben Yan*, Xudong Liu*, Bo Li*, Guangsheng Zuo*（北航）</li><li>会议级别：CCF-B类</li><li>发表会议：23rd International Symposium on Research in Attacks, Intrusions and Defenses</li><li>原文链接：<a href="https://www.usenix.org/conference/raid2020/presentation/zhao">https://www.usenix.org/conference/raid2020/presentation/zhao</a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;style&gt;
+ body {
+    /* font-family: &quot;宋体&quot;, SimSun, serif; */
+    font-size: 16px;
+  }
+   p {
+    line-height: 1.7;
+  }
+&lt;/style&gt;
+
+&lt;ul&gt;
+&lt;li&gt;论文标</summary>
+      
+    
+    
+    
+    <category term="论文" scheme="https://jinzbone.github.io/categories/%E8%AE%BA%E6%96%87/"/>
+    
+    
+    <category term="论文" scheme="https://jinzbone.github.io/tags/%E8%AE%BA%E6%96%87/"/>
+    
+  </entry>
   
   <entry>
     <title>JMeter教程</title>

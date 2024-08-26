@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://jinzbone.github.io/2024/08/26/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9ACyber-Threat-Intelligence-Modeling-Based-on-Heterogeneous-Graph/</loc>
+    
+    <lastmod>2024-08-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://jinzbone.github.io/2024/08/24/JMeter%E6%95%99%E7%A8%8B/</loc>
     
     <lastmod>2024-08-26</lastmod>
@@ -135,6 +144,13 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://jinzbone.github.io/tags/%E8%AE%BA%E6%96%87/</loc>
+    <lastmod>2024-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -160,6 +176,13 @@
   
   <url>
     <loc>https://jinzbone.github.io/categories/%E7%AE%A1%E7%90%86/</loc>
+    <lastmod>2024-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jinzbone.github.io/categories/%E8%AE%BA%E6%96%87/</loc>
     <lastmod>2024-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
